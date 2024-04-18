@@ -1,0 +1,383 @@
+package com.example.yourwordcollection.navigationcomponent.fragment.main
+
+import android.content.Context
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.yourwordcollection.databinding.FragmentMainNavigationBinding
+import com.example.yourwordcollection.navigationcomponent.fragment.main.adapter.AlphabetAdapter
+import com.example.yourwordcollection.navigationcomponent.fragment.main.adapter.AlphabetAdapterListener
+import com.example.yourwordcollection.navigationcomponent.fragment.main.data.Alphabet
+import com.example.yourwordcollection.navigationcomponent.fragment.wordlist.data.Word
+
+class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
+    private val alphabetAdapter = AlphabetAdapter(this)
+    private lateinit var binding:FragmentMainNavigationBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return FragmentMainNavigationBinding.inflate(inflater, container, false).also {
+            binding = it
+        }.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setData(view.context)
+        refresh()
+        binding.swipeRefresh.setOnRefreshListener { refresh() }
+    }
+
+    override fun onClickAlphabet(data: List<Word>) {
+        navigateToWordList(data)
+    }
+
+    private fun setData(context: Context) {
+        binding.alphabetList.layoutManager = LinearLayoutManager(
+            context,
+            LinearLayoutManager.VERTICAL,
+            false
+        )
+        binding.alphabetList.adapter = alphabetAdapter
+        binding.alphabetList.itemAnimator = DefaultItemAnimator()
+    }
+
+    private fun refresh() {
+        alphabetAdapter.submitList(getAlphabetLists())
+        binding.swipeRefresh.isRefreshing = false
+    }
+
+    private fun navigateToWordList(data: List<Word>) {
+        val actionToWordlistFragment =
+            MainNavigationFragmentDirections.actionMainNavigationFragmentToWordlistNavigationFragment()
+        actionToWordlistFragment.actionId
+        print("halo")
+    }
+
+    private fun getAlphabetLists() : List<Alphabet> {
+        return listOf(
+            Alphabet(
+                name = "A",
+                wordLists = listOf(
+                    Word(
+                        name = "Awan",
+                        imgUrl = "https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2022/05/24/clouds-2329680_1280jpg-20220524084248.jpg"
+                    ),
+                    Word(
+                        name = "Api",
+                        imgUrl = "https://awsimages.detik.net.id/community/media/visual/2022/02/03/ilustrasi-api.jpeg?w=1200"
+                    ),
+                    Word(
+                        name = "Air",
+                        imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Qbkx4Hecliy3UPSgUnkEA5xSKvESe9bkR-S4OUkt7Q&s"
+                    ),
+                    Word(
+                        name = "Avatar",
+                        imgUrl = "https://cdn.antaranews.com/cache/1200x800/2023/06/18/20230618_080945.jpg"
+                    ),
+                )
+            ),
+            Alphabet(
+                name = "B",
+                wordLists = listOf(
+                    Word(
+                        name = "Bambu",
+                        imgUrl = "https://awsimages.detik.net.id/community/media/visual/2016/04/18/09255641-bc49-4fe4-8dd8-a1b669ffcacb.jpg?w=600&q=90"
+                    ),
+                    Word(
+                        name = "Batu Bara",
+                        imgUrl = "https://awsimages.detik.net.id/visual/2021/11/22/aktivitas-bongkar-muat-batu-bara-11_169.jpeg?w=650"
+                    ),
+                    Word(
+                        name = "Baling-baling Bambu",
+                        imgUrl = "https://img.ws.mms.shopee.co.id/1b07274a86964fad45fd48d725cd8123"
+                    ),
+                    Word(
+                        name = "Batman",
+                        imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZXmjPSrlN0CrrLKezFoQKpAPXKwqw54RUYTz0qD0D-g&s"
+                    ),
+                )
+            ),
+            Alphabet(
+                name = "C",
+                wordLists = listOf(
+                    Word(
+                        name = "Cherry",
+                        imgUrl = "https://i.pinimg.com/736x/4c/c1/ee/4cc1eee2356913b574a8fbafa16d5acd.jpg"
+                    ),
+                    Word(
+                        name = "Cherrybelle",
+                        imgUrl = "https://i.scdn.co/image/ab67616d0000b273fd5999a280230b968199cf54"
+                    ),
+                    Word(
+                        name = "Changcuters",
+                        imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTflShk1uNfc9ECbGuwN_Iy7LQFXnpO4Nwk9ndEusR38g&s"
+                    ),
+                    Word(
+                        name = "Cepmek",
+                        imgUrl = "https://awsimages.detik.net.id/community/media/visual/2022/11/08/tiktokers-viral-populerkan-gaya-rambut-cepmek-dan-jargon-kadang-kadang-ente-8_34.jpeg?w=375"
+                    ),
+                )
+            ),
+            Alphabet(
+                name = "D",
+                wordLists = listOf(
+                    Word(
+                        name = "Dadu",
+                        imgUrl = "https://i.pinimg.com/564x/91/64/d3/9164d3ec2bc19742d831f0b9a20a0de5.jpg"
+                    ),
+                    Word(
+                        name = "Doraemon",
+                        imgUrl = "https://radarbanyumas.disway.id/upload/2022/04/fakta-Doraemon.jpg"
+                    ),
+                    Word(
+                        name = "Durian",
+                        imgUrl = "https://4.imimg.com/data4/FF/FF/GLADMIN-/durian-fruit-500x500.jpg"
+                    ),
+                    Word(
+                        name = "Dora",
+                        imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT9zBqQ2jdZVQJ56IlLvNRDGMROx8ODshM1OK65BtHVQ&s"
+                    ),
+                )
+            ),
+            Alphabet(
+                name = "E",
+                wordLists = listOf(
+                    Word(
+                        name = "Emoticon",
+                        imgUrl = "https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2022/05/24/clouds-2329680_1280jpg-20220524084248.jpg"
+                    ),
+                    Word(
+                        name = "Emosi",
+                        imgUrl = "https://asset.kompas.com/crops/1ZZTmOjYqsGIP88AV-RCyoLmoo4=/0x0:780x390/750x500/data/photo/2012/08/31/1618022780x390.jpg"
+                    ),
+                    Word(
+                        name = "Ekosistem",
+                        imgUrl = "https://img.inews.co.id/media/600/files/inews_new/2022/09/25/ilustrasi_ekosistem.jpg"
+                    ),
+                    Word(
+                        name = "Empati",
+                        imgUrl = "https://kelanakids.com/wp-content/uploads/2022/04/Cara-Mengajarkan-Sikap-Empati-Pada-Anak-Usia-Dini.jpg"
+                    ),
+                )
+            ),
+            Alphabet(
+                name = "F",
+                wordLists = listOf(
+                    Word(
+                        name = "Frankenstein",
+                        imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1jOFVLap2D6I0mWHdnAA6Vt3KE-22rWscdijkHdYMAw&s"
+                    ),
+                    Word(
+                        name = "Ferrari",
+                        imgUrl = "https://imgcdn.oto.com/large/gallery/exterior/10/2213/ferrari-sf90-stradale-front-angle-low-view-433345.jpg"
+                    ),
+                    Word(
+                        name = "Fantastic Four",
+                        imgUrl = "https://m.media-amazon.com/images/I/A1deeg7Nx+L._AC_UF894,1000_QL80_.jpg"
+                    ),
+                    Word(
+                        name = "Farm",
+                        imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkdSQNwEtM1w6KfNOkYk6O4Y9qYmm3l9QjqyhHg1-9sQ&s"
+                    ),
+                )
+            ),
+            Alphabet(
+                name = "G",
+                wordLists = listOf(
+                    Word(
+                        name = "Gem",
+                        imgUrl = "https://cdn-difln.nitrocdn.com/RhGgIzTmiXjwbtwwtHDWcsddooFiyhcI/assets/images/optimized/rev-34b43f1/www.iconicjewelry.com/app/uploads/2017/07/red-gem-1-1024x1024.png"
+                    ),
+                    Word(
+                        name = "Gorilla",
+                        imgUrl = "https://i.natgeofe.com/n/abf58ec8-ac78-4108-adbe-918fa5bda2e5/mountain-gorilla_3x4.jpg"
+                    ),
+                    Word(
+                        name = "Giraffe",
+                        imgUrl = "https://images.ctfassets.net/81iqaqpfd8fy/3r4flvP8Z26WmkMwAEWEco/870554ed7577541c5f3bc04942a47b95/78745131.jpg?w=1200&h=1200&fm=jpg&fit=fill"
+                    ),
+                    Word(
+                        name = "Goat",
+                        imgUrl = "https://d.newsweek.com/en/full/2303646/baby-goat.webp?w=1600&h=900&q=88&f=32b78ef566c14f9508c18a381e256cc7"
+                    ),
+                )
+            ),
+            Alphabet(
+                name = "H",
+                wordLists = listOf(
+                    Word(
+                        name = "Hamster",
+                        imgUrl = "https://www.burgesspetcare.com/wp-content/uploads/2024/01/Hamster.jpg"
+                    ),
+                    Word(
+                        name = "Harp",
+                        imgUrl = "https://cdn.britannica.com/90/210490-050-34704C4C/woman-harp.jpg"
+                    ),
+                    Word(
+                        name = "Hand",
+                        imgUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Hand_Model.jpg/800px-Hand_Model.jpg"
+                    ),
+                    Word(
+                        name = "Hammer",
+                        imgUrl = "https://images.tokopedia.net/img/cache/700/VqbcmM/2023/5/15/0fa6cda4-3865-402b-9882-ab6ac1f7fd7e.jpg"
+                    ),
+                )
+            ),
+            Alphabet(
+                name = "I",
+                wordLists = listOf(
+                    Word(
+                        name = "Ice",
+                        imgUrl = "https://cdn.shopify.com/s/files/1/0180/9499/files/ice_image_large.jpg?v=1491507919"
+                    ),
+                    Word(
+                        name = "Idea",
+                        imgUrl = "https://img.freepik.com/free-vector/businessman-get-idea_1133-350.jpg?size=338&ext=jpg&ga=GA1.1.1700460183.1713398400&semt=sph"
+                    ),
+                    Word(
+                        name = "Identity",
+                        imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNanWt5ad64tvvJjliJusZ5Vleb4Mjm8JJZCyFUXHtew&s"
+                    ),
+                    Word(
+                        name = "Isolation",
+                        imgUrl = "https://www.newportacademy.com/wp-content/uploads/man-in-gray-shirt-looking-at-city-buildings-3625023.jpg"
+                    ),
+                )
+            ),
+            Alphabet(
+                name = "J",
+                wordLists = listOf(
+                    Word(
+                        name = "Jam",
+                        imgUrl = "https://i0.wp.com/www.pardonyourfrench.com/wp-content/uploads/2022/05/strawberry-jam-5.jpg?resize=585%2C585&ssl=1"
+                    ),
+                    Word(
+                        name = "Juice",
+                        imgUrl = "https://www.spiceupthecurry.com/wp-content/uploads/2022/03/strawberry-juice-1.jpg"
+                    ),
+                    Word(
+                        name = "Jet",
+                        imgUrl = "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2023-09/230921-f-35-mn-0850-92f318.jpg"
+                    ),
+                    Word(
+                        name = "Journey",
+                        imgUrl = "https://tuvv.telkomuniversity.ac.id/wp-content/uploads/2014/10/city-road-street-italy-1.jpg"
+                    ),
+                )
+            ),
+            Alphabet(
+                name = "K",
+                wordLists = listOf(
+                    Word(
+                        name = "Kingdom",
+                        imgUrl = "https://a.cdn-hotels.com/gdcs/production12/d1130/83f1c8c6-e12d-4e69-8433-c5bbc90b5ad6.jpg"
+                    ),
+                    Word(
+                        name = "Kid",
+                        imgUrl = "https://image.cnbcfm.com/api/v1/image/107203114-1677872178166-GettyImages-1382525205.jpg?v=1677940236&w=929&h=523&vtcrop=y"
+                    ),
+                    Word(
+                        name = "Kite",
+                        imgUrl = "https://5.imimg.com/data5/SELLER/Default/2023/2/DN/TL/DC/63424135/tiranga-paper-kite-500x500.jpg"
+                    ),
+                    Word(
+                        name = "Kairo",
+                        imgUrl = "https://static.republika.co.id/uploads/images/inpicture_slide/al-fustat-kairo_210731202231-912.jpg"
+                    ),
+                )
+            ),
+            Alphabet(
+                name = "L",
+                wordLists = listOf(
+                    Word(
+                        name = "Lasagna",
+                        imgUrl = "https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2022/05/24/clouds-2329680_1280jpg-20220524084248.jpg"
+                    ),
+                    Word(
+                        name = "Lamborgini",
+                        imgUrl = "https://awsimages.detik.net.id/community/media/visual/2022/02/03/ilustrasi-api.jpeg?w=1200"
+                    ),
+                    Word(
+                        name = "Longitude",
+                        imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Qbkx4Hecliy3UPSgUnkEA5xSKvESe9bkR-S4OUkt7Q&s"
+                    ),
+                    Word(
+                        name = "Loaf",
+                        imgUrl = "https://cdn.antaranews.com/cache/1200x800/2023/06/18/20230618_080945.jpg"
+                    ),
+                )
+            ),
+            Alphabet(
+                name = "M",
+                wordLists = listOf(
+                    Word(
+                        name = "Masterpiece",
+                        imgUrl = "https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2022/05/24/clouds-2329680_1280jpg-20220524084248.jpg"
+                    ),
+                    Word(
+                        name = "Mysery",
+                        imgUrl = "https://awsimages.detik.net.id/community/media/visual/2022/02/03/ilustrasi-api.jpeg?w=1200"
+                    ),
+                    Word(
+                        name = "Magazine",
+                        imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Qbkx4Hecliy3UPSgUnkEA5xSKvESe9bkR-S4OUkt7Q&s"
+                    ),
+                    Word(
+                        name = "Mowhawk",
+                        imgUrl = "https://cdn.antaranews.com/cache/1200x800/2023/06/18/20230618_080945.jpg"
+                    ),
+                )
+            ),
+            Alphabet(
+                name = "N",
+                wordLists = listOf(
+                    Word(
+                        name = "Nail",
+                        imgUrl = "https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2022/05/24/clouds-2329680_1280jpg-20220524084248.jpg"
+                    ),
+                    Word(
+                        name = "North",
+                        imgUrl = "https://awsimages.detik.net.id/community/media/visual/2022/02/03/ilustrasi-api.jpeg?w=1200"
+                    ),
+                    Word(
+                        name = "Norm",
+                        imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Qbkx4Hecliy3UPSgUnkEA5xSKvESe9bkR-S4OUkt7Q&s"
+                    ),
+                    Word(
+                        name = "Nobel",
+                        imgUrl = "https://cdn.antaranews.com/cache/1200x800/2023/06/18/20230618_080945.jpg"
+                    ),
+                )
+            ),
+            Alphabet(
+                name = "O",
+                wordLists = listOf(
+                    Word(
+                        name = "Oat",
+                        imgUrl = "https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2022/05/24/clouds-2329680_1280jpg-20220524084248.jpg"
+                    ),
+                    Word(
+                        name = "Occasion",
+                        imgUrl = "https://awsimages.detik.net.id/community/media/visual/2022/02/03/ilustrasi-api.jpeg?w=1200"
+                    ),
+                    Word(
+                        name = "Orchestra",
+                        imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Qbkx4Hecliy3UPSgUnkEA5xSKvESe9bkR-S4OUkt7Q&s"
+                    ),
+                    Word(
+                        name = "Oval",
+                        imgUrl = "https://cdn.antaranews.com/cache/1200x800/2023/06/18/20230618_080945.jpg"
+                    ),
+                )
+            ),
+        )
+    }
+}

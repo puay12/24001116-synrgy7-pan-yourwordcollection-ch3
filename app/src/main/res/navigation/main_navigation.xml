@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/mainNavigationFragment">
+
+    <fragment
+        android:id="@+id/mainNavigationFragment"
+        android:name="com.example.yourwordcollection.navigationcomponent.fragment.main.MainNavigationFragment"
+        android:label="MainNavigationFragment"
+        tools:layout="@layout/fragment_main_navigation" >
+        <action
+            android:id="@+id/action_mainNavigationFragment_to_wordlistNavigationFragment"
+            app:destination="@id/wordlistNavigationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wordlistNavigationFragment"
+        android:name="com.example.yourwordcollection.navigationcomponent.fragment.wordlist.WordlistNavigationFragment"
+        android:label="WordlistNavigationFragment"
+        tools:layout="@layout/fragment_wordlist_navigation" />
+</navigation>

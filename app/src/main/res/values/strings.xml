@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Your Word Collection</string>
+    <string name="alphabet_item">A</string>
+    <string name="title">Daftar Alphabet</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="word_text">Halo dek</string>
+</resources>
