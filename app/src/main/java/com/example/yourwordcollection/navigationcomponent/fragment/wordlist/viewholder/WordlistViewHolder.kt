@@ -10,7 +10,7 @@ class WordlistViewHolder(
     private val wordlistAdapterListener: WordlistAdapterListener,
     private val binding: ItemWordBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(data: Word) {
+    fun render(data: Word) {
         binding.wordText.text = data.name
         binding.wordImage.load(data.imgUrl)
         binding.root.setOnClickListener { wordlistAdapterListener.onClickWord(data.name) }

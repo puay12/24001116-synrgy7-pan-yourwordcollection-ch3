@@ -21,7 +21,6 @@ class NavigationComponentActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.i("somethin", "MASUK")
         setContentView(binding.root)
         setupNavigationComponentWithAppbar()
     }

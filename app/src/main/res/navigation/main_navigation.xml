@@ -18,5 +18,6 @@
         android:id="@+id/wordlistNavigationFragment"
         android:name="com.example.yourwordcollection.navigationcomponent.fragment.wordlist.WordlistNavigationFragment"
         android:label="WordlistNavigationFragment"
-        tools:layout="@layout/fragment_wordlist_navigation" />
+        tools:layout="@layout/fragment_wordlist_navigation" >
+    </fragment>
 </navigation>

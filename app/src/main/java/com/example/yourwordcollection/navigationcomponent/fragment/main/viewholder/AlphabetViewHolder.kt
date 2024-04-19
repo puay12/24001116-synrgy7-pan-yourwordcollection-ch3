@@ -9,7 +9,7 @@ class AlphabetViewHolder(
     private val alphabetAdapterListener: AlphabetAdapterListener,
     private val binding: ItemAlphabetBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(data: Alphabet) {
+    fun render(data: Alphabet) {
         binding.alphabetText.text = data.name
         binding.root.setOnClickListener { alphabetAdapterListener.onClickAlphabet(data.wordLists) }
     }

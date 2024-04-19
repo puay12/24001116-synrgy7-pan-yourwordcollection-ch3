@@ -4,5 +4,5 @@ import com.example.yourwordcollection.navigationcomponent.fragment.wordlist.data
 
 data class Alphabet(
     val name:String,
-    val wordLists:List<Word>
+    val wordLists:Array<Word>
 )

@@ -26,6 +26,6 @@ class WordlistAdapter(
     }
 
     override fun onBindViewHolder(holder: WordlistViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.render(getItem(position))
     }
 }

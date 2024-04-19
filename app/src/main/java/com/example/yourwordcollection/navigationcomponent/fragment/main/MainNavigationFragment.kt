@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.yourwordcollection.R
 import com.example.yourwordcollection.databinding.FragmentMainNavigationBinding
 import com.example.yourwordcollection.navigationcomponent.fragment.main.adapter.AlphabetAdapter
 import com.example.yourwordcollection.navigationcomponent.fragment.main.adapter.AlphabetAdapterListener
@@ -35,7 +37,7 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
         binding.swipeRefresh.setOnRefreshListener { refresh() }
     }
 
-    override fun onClickAlphabet(data: List<Word>) {
+    override fun onClickAlphabet(data: Array<Word>) {
         navigateToWordList(data)
     }
 
@@ -54,18 +56,22 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
         binding.swipeRefresh.isRefreshing = false
     }
 
-    private fun navigateToWordList(data: List<Word>) {
-        val actionToWordlistFragment =
-            MainNavigationFragmentDirections.actionMainNavigationFragmentToWordlistNavigationFragment()
-        actionToWordlistFragment.actionId
-        print("halo")
+    private fun navigateToWordList(data: Array<Word>) {
+        val bundle = Bundle()
+
+        bundle.putParcelableArray("wordList", data)
+
+        findNavController().navigate(
+            R.id.action_mainNavigationFragment_to_wordlistNavigationFragment,
+            bundle
+        )
     }
 
     private fun getAlphabetLists() : List<Alphabet> {
         return listOf(
             Alphabet(
                 name = "A",
-                wordLists = listOf(
+                wordLists = arrayOf(
                     Word(
                         name = "Awan",
                         imgUrl = "https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2022/05/24/clouds-2329680_1280jpg-20220524084248.jpg"
@@ -86,7 +92,7 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
             ),
             Alphabet(
                 name = "B",
-                wordLists = listOf(
+                wordLists = arrayOf(
                     Word(
                         name = "Bambu",
                         imgUrl = "https://awsimages.detik.net.id/community/media/visual/2016/04/18/09255641-bc49-4fe4-8dd8-a1b669ffcacb.jpg?w=600&q=90"
@@ -107,7 +113,7 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
             ),
             Alphabet(
                 name = "C",
-                wordLists = listOf(
+                wordLists = arrayOf(
                     Word(
                         name = "Cherry",
                         imgUrl = "https://i.pinimg.com/736x/4c/c1/ee/4cc1eee2356913b574a8fbafa16d5acd.jpg"
@@ -128,7 +134,7 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
             ),
             Alphabet(
                 name = "D",
-                wordLists = listOf(
+                wordLists = arrayOf(
                     Word(
                         name = "Dadu",
                         imgUrl = "https://i.pinimg.com/564x/91/64/d3/9164d3ec2bc19742d831f0b9a20a0de5.jpg"
@@ -149,10 +155,10 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
             ),
             Alphabet(
                 name = "E",
-                wordLists = listOf(
+                wordLists = arrayOf(
                     Word(
                         name = "Emoticon",
-                        imgUrl = "https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2022/05/24/clouds-2329680_1280jpg-20220524084248.jpg"
+                        imgUrl = "https://as2.ftcdn.net/v2/jpg/02/74/59/65/1000_F_274596599_EBstUBPBs32oVZMW1MOrvVUpe8YrtQyx.jpg"
                     ),
                     Word(
                         name = "Emosi",
@@ -170,7 +176,7 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
             ),
             Alphabet(
                 name = "F",
-                wordLists = listOf(
+                wordLists = arrayOf(
                     Word(
                         name = "Frankenstein",
                         imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1jOFVLap2D6I0mWHdnAA6Vt3KE-22rWscdijkHdYMAw&s"
@@ -191,7 +197,7 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
             ),
             Alphabet(
                 name = "G",
-                wordLists = listOf(
+                wordLists = arrayOf(
                     Word(
                         name = "Gem",
                         imgUrl = "https://cdn-difln.nitrocdn.com/RhGgIzTmiXjwbtwwtHDWcsddooFiyhcI/assets/images/optimized/rev-34b43f1/www.iconicjewelry.com/app/uploads/2017/07/red-gem-1-1024x1024.png"
@@ -212,7 +218,7 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
             ),
             Alphabet(
                 name = "H",
-                wordLists = listOf(
+                wordLists = arrayOf(
                     Word(
                         name = "Hamster",
                         imgUrl = "https://www.burgesspetcare.com/wp-content/uploads/2024/01/Hamster.jpg"
@@ -233,7 +239,7 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
             ),
             Alphabet(
                 name = "I",
-                wordLists = listOf(
+                wordLists = arrayOf(
                     Word(
                         name = "Ice",
                         imgUrl = "https://cdn.shopify.com/s/files/1/0180/9499/files/ice_image_large.jpg?v=1491507919"
@@ -254,7 +260,7 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
             ),
             Alphabet(
                 name = "J",
-                wordLists = listOf(
+                wordLists = arrayOf(
                     Word(
                         name = "Jam",
                         imgUrl = "https://i0.wp.com/www.pardonyourfrench.com/wp-content/uploads/2022/05/strawberry-jam-5.jpg?resize=585%2C585&ssl=1"
@@ -275,7 +281,7 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
             ),
             Alphabet(
                 name = "K",
-                wordLists = listOf(
+                wordLists = arrayOf(
                     Word(
                         name = "Kingdom",
                         imgUrl = "https://a.cdn-hotels.com/gdcs/production12/d1130/83f1c8c6-e12d-4e69-8433-c5bbc90b5ad6.jpg"
@@ -296,85 +302,85 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
             ),
             Alphabet(
                 name = "L",
-                wordLists = listOf(
+                wordLists = arrayOf(
                     Word(
                         name = "Lasagna",
-                        imgUrl = "https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2022/05/24/clouds-2329680_1280jpg-20220524084248.jpg"
+                        imgUrl = "https://assets.bonappetit.com/photos/656f48d75b552734225041ba/1:1/w_3129,h_3129,c_limit/20231120-WEB-Lasanga-6422.jpg"
                     ),
                     Word(
                         name = "Lamborgini",
-                        imgUrl = "https://awsimages.detik.net.id/community/media/visual/2022/02/03/ilustrasi-api.jpeg?w=1200"
+                        imgUrl = "https://cdn.motor1.com/images/mgl/88Xjq/s1/lamborghini-sc20.webp"
                     ),
                     Word(
                         name = "Longitude",
-                        imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Qbkx4Hecliy3UPSgUnkEA5xSKvESe9bkR-S4OUkt7Q&s"
+                        imgUrl = "https://cdn.britannica.com/63/2063-050-89E52B49/Perspective-globe-grid-parallels-meridians-longitude-latitude.jpg"
                     ),
                     Word(
                         name = "Loaf",
-                        imgUrl = "https://cdn.antaranews.com/cache/1200x800/2023/06/18/20230618_080945.jpg"
+                        imgUrl = "https://thepracticalkitchen.com/wp-content/uploads/2023/07/brioche-bread-loaf-1x1-3219.jpg"
                     ),
                 )
             ),
             Alphabet(
                 name = "M",
-                wordLists = listOf(
+                wordLists = arrayOf(
                     Word(
-                        name = "Masterpiece",
-                        imgUrl = "https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2022/05/24/clouds-2329680_1280jpg-20220524084248.jpg"
+                        name = "Master Chef",
+                        imgUrl = "https://m.media-amazon.com/images/M/MV5BMTEyMzlkODgtYmUxYS00M2M0LTljMDItNzI5OGFlZTc5ZDFkXkEyXkFqcGdeQXVyODk4Nzg5NjE@._V1_.jpg"
                     ),
                     Word(
                         name = "Mysery",
-                        imgUrl = "https://awsimages.detik.net.id/community/media/visual/2022/02/03/ilustrasi-api.jpeg?w=1200"
+                        imgUrl = "https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/07/12/14/angry-istock.jpg?width=1200"
                     ),
                     Word(
                         name = "Magazine",
-                        imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Qbkx4Hecliy3UPSgUnkEA5xSKvESe9bkR-S4OUkt7Q&s"
+                        imgUrl = "https://res.cloudinary.com/bloomsbury-atlas/image/upload/w_568,c_scale/jackets/9781501394966.jpg"
                     ),
                     Word(
                         name = "Mowhawk",
-                        imgUrl = "https://cdn.antaranews.com/cache/1200x800/2023/06/18/20230618_080945.jpg"
+                        imgUrl = "https://content.latest-hairstyles.com/wp-content/uploads/naturally-textured-faded-mohawk-for-men.jpg"
                     ),
                 )
             ),
             Alphabet(
                 name = "N",
-                wordLists = listOf(
+                wordLists = arrayOf(
                     Word(
                         name = "Nail",
-                        imgUrl = "https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2022/05/24/clouds-2329680_1280jpg-20220524084248.jpg"
+                        imgUrl = "https://cdnwpseller.gramedia.com/wp-content/uploads/2023/04/Polished_purple_nails_with_nail_art_on-scaled.jpg"
                     ),
                     Word(
                         name = "North",
-                        imgUrl = "https://awsimages.detik.net.id/community/media/visual/2022/02/03/ilustrasi-api.jpeg?w=1200"
+                        imgUrl = "https://thumbs.dreamstime.com/z/north-arrow-icon-n-direction-navigation-point-symbol-vector-logo-circle-gps-navigator-map-north-arrow-icon-n-125994654.jpg"
                     ),
                     Word(
                         name = "Norm",
-                        imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Qbkx4Hecliy3UPSgUnkEA5xSKvESe9bkR-S4OUkt7Q&s"
+                        imgUrl = "https://play-lh.googleusercontent.com/tI9SC37Awv0UzdEf3MqGXPlmk9fW9bUgoKoap5jChOTm6YzSNPhaSR_VQCsBmfHutmiv"
                     ),
                     Word(
                         name = "Nobel",
-                        imgUrl = "https://cdn.antaranews.com/cache/1200x800/2023/06/18/20230618_080945.jpg"
+                        imgUrl = "https://upload.wikimedia.org/wikipedia/id/e/ed/Nobel_Prize.png"
                     ),
                 )
             ),
             Alphabet(
                 name = "O",
-                wordLists = listOf(
+                wordLists = arrayOf(
                     Word(
                         name = "Oat",
-                        imgUrl = "https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2022/05/24/clouds-2329680_1280jpg-20220524084248.jpg"
+                        imgUrl = "https://assets.klikindomaret.com/share/10025301_1.jpg"
                     ),
                     Word(
-                        name = "Occasion",
-                        imgUrl = "https://awsimages.detik.net.id/community/media/visual/2022/02/03/ilustrasi-api.jpeg?w=1200"
+                        name = "Ornamen",
+                        imgUrl = "https://mir-s3-cdn-cf.behance.net/projects/404/47109c149234097.62e38a8b5efe4.jpg"
                     ),
                     Word(
                         name = "Orchestra",
-                        imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Qbkx4Hecliy3UPSgUnkEA5xSKvESe9bkR-S4OUkt7Q&s"
+                        imgUrl = "https://i.ytimg.com/vi/DPFcSJEmJxc/maxresdefault.jpg"
                     ),
                     Word(
-                        name = "Oval",
-                        imgUrl = "https://cdn.antaranews.com/cache/1200x800/2023/06/18/20230618_080945.jpg"
+                        name = "OMG",
+                        imgUrl = "https://cdn-icons-png.flaticon.com/512/8819/8819074.png"
                     ),
                 )
             ),

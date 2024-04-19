@@ -27,6 +27,6 @@ class AlphabetAdapter(
         }
 
         override fun onBindViewHolder(holder: AlphabetViewHolder, position: Int) {
-                holder.bind(getItem(position))
+                holder.render(getItem(position))
         }
 }
