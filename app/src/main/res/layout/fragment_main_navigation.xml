@@ -17,7 +17,7 @@
         android:textSize="16sp"
         android:textColor="?android:textColorPrimary"
         android:letterSpacing="0.2"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="16dp"
         android:layout_gravity="center_horizontal"/>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
