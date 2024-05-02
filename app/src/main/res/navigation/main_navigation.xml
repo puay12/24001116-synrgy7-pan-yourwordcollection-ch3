@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
     app:startDestination="@id/mainNavigationFragment">
-
     <fragment
         android:id="@+id/mainNavigationFragment"
         android:name="com.example.yourwordcollection.navigationcomponent.fragment.main.MainNavigationFragment"
-        android:label="MainNavigationFragment"
+        android:label="fragment_main_navigation"
         tools:layout="@layout/fragment_main_navigation" >
         <action
             android:id="@+id/action_mainNavigationFragment_to_wordlistNavigationFragment"
@@ -17,7 +16,6 @@
     <fragment
         android:id="@+id/wordlistNavigationFragment"
         android:name="com.example.yourwordcollection.navigationcomponent.fragment.wordlist.WordlistNavigationFragment"
-        android:label="WordlistNavigationFragment"
-        tools:layout="@layout/fragment_wordlist_navigation" >
-    </fragment>
+        android:label="fragment_wordlist_navigation"
+        tools:layout="@layout/fragment_wordlist_navigation" />
 </navigation>

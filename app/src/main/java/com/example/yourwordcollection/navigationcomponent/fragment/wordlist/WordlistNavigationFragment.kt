@@ -10,16 +10,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.yourwordcollection.databinding.FragmentWordlistNavigationBinding
 import com.example.yourwordcollection.extension.SpacesItemDecoration
 import com.example.yourwordcollection.navigationcomponent.fragment.wordlist.adapter.WordlistAdapter
 import com.example.yourwordcollection.navigationcomponent.fragment.wordlist.adapter.WordlistAdapterListener
-import com.example.yourwordcollection.navigationcomponent.fragment.wordlist.data.Word
+import com.example.yourwordcollection.navigationcomponent.fragment.wordlist.logic.WordlistNavigationLogic
+import com.example.yourwordcollection.viewmodel.wordlist.WordlistNavigationViewModel
 
 class WordlistNavigationFragment : Fragment(), WordlistAdapterListener {
     private val wordlistAdapter = WordlistAdapter(this)
+    private val viewModel : WordlistNavigationViewModel by viewModels<WordlistNavigationViewModel>()
+    private val wordlistLogic = WordlistNavigationLogic()
     private lateinit var binding: FragmentWordlistNavigationBinding
 
     override fun onCreateView(
@@ -56,21 +60,15 @@ class WordlistNavigationFragment : Fragment(), WordlistAdapterListener {
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun refresh() {
-        wordlistAdapter.submitList(getWordList()?.toList())
+        viewModel.getWordList(arguments!!)?.observe(this) { wordListData ->
+            wordlistAdapter.submitList(wordListData)
+        }
         binding.swipeRefresh.isRefreshing = false
     }
 
     private fun navigateToGoogle(keyword: String) {
         val intent = Intent(Intent.ACTION_VIEW)
-        val word = "$keyword dalam bahasa indonesia"
-        intent.setData(Uri.parse("https://www.google.com/search?q=${keyword} adalah"))
+        intent.data = Uri.parse(wordlistLogic.getGoogleUrl(keyword))
         startActivity(intent)
-    }
-
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-    private fun getWordList() : Array<Word>? {
-        val data = arguments?.getParcelableArray("wordList", Word::class.java)
-
-        return data
     }
 }

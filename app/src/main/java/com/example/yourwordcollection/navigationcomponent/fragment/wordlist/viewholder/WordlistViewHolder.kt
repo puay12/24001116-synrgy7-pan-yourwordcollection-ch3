@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.yourwordcollection.databinding.ItemWordBinding
 import com.example.yourwordcollection.navigationcomponent.fragment.wordlist.adapter.WordlistAdapterListener
-import com.example.yourwordcollection.navigationcomponent.fragment.wordlist.data.Word
+import com.example.yourwordcollection.navigationcomponent.fragment.wordlist.model.Word
 
 class WordlistViewHolder(
     private val wordlistAdapterListener: WordlistAdapterListener,

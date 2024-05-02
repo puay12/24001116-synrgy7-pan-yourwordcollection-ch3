@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.yourwordcollection.databinding.ItemAlphabetBinding
-import com.example.yourwordcollection.navigationcomponent.fragment.main.data.Alphabet
+import com.example.yourwordcollection.navigationcomponent.fragment.main.model.Alphabet
 import com.example.yourwordcollection.navigationcomponent.fragment.main.viewholder.AlphabetViewHolder
 
 class AlphabetAdapter(

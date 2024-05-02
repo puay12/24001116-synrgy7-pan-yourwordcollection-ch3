@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.yourwordcollection.databinding.ItemWordBinding
-import com.example.yourwordcollection.navigationcomponent.fragment.wordlist.data.Word
+import com.example.yourwordcollection.navigationcomponent.fragment.wordlist.model.Word
 import com.example.yourwordcollection.navigationcomponent.fragment.wordlist.viewholder.WordlistViewHolder
 
 class WordlistAdapter(

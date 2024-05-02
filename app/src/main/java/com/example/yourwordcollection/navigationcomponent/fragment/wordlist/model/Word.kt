@@ -1,4 +1,4 @@
-package com.example.yourwordcollection.navigationcomponent.fragment.wordlist.data
+package com.example.yourwordcollection.navigationcomponent.fragment.wordlist.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

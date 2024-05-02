@@ -3,7 +3,7 @@ package com.example.yourwordcollection.navigationcomponent.fragment.main.viewhol
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yourwordcollection.databinding.ItemAlphabetBinding
 import com.example.yourwordcollection.navigationcomponent.fragment.main.adapter.AlphabetAdapterListener
-import com.example.yourwordcollection.navigationcomponent.fragment.main.data.Alphabet
+import com.example.yourwordcollection.navigationcomponent.fragment.main.model.Alphabet
 
 class AlphabetViewHolder(
     private val alphabetAdapterListener: AlphabetAdapterListener,
@@ -11,6 +11,6 @@ class AlphabetViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
     fun render(data: Alphabet) {
         binding.alphabetText.text = data.name
-        binding.root.setOnClickListener { alphabetAdapterListener.onClickAlphabet(data.wordLists) }
+        binding.root.setOnClickListener { alphabetAdapterListener.onClickAlphabet(data.wordLists!!) }
     }
 }
