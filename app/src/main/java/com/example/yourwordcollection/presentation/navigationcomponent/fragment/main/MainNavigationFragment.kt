@@ -1,6 +1,7 @@
 package com.example.yourwordcollection.presentation.navigationcomponent.fragment.main
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,12 +16,13 @@ import com.example.yourwordcollection.databinding.FragmentMainNavigationBinding
 import com.example.yourwordcollection.presentation.navigationcomponent.fragment.main.adapter.AlphabetAdapter
 import com.example.yourwordcollection.presentation.navigationcomponent.fragment.main.adapter.AlphabetAdapterListener
 import com.example.yourwordcollection.data.model.Word
+import com.example.yourwordcollection.presentation.activity.login.LoginActivity
 import com.example.yourwordcollection.presentation.viewmodel.main.MainNavigationViewModel
 
 class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
     private val alphabetAdapter = AlphabetAdapter(this)
     private val viewModel by viewModels<MainNavigationViewModel> {
-        MainNavigationViewModel.provideFactory(this)
+        MainNavigationViewModel.provideFactory(this, requireActivity().applicationContext)
     }
     private lateinit var binding:FragmentMainNavigationBinding
 
@@ -40,6 +42,7 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
         refresh()
         binding.swipeRefresh.setOnRefreshListener { refresh() }
         binding.seeFavBtn.setOnClickListener { navigateToFavorites() }
+        binding.logoutButton.setOnClickListener { logout() }
     }
 
     override fun onClickAlphabet(data: Array<Word>) {
@@ -78,5 +81,11 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
         findNavController().navigate(
             R.id.action_mainNavigationFragment_to_favoritesNavigationFragment
         )
+    }
+
+    private fun logout() {
+        viewModel.logout()
+        startActivity(Intent(requireActivity().applicationContext, LoginActivity::class.java))
+        activity?.finish()
     }
 }

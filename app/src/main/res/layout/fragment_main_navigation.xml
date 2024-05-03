@@ -10,6 +10,19 @@
     tools:context=".presentation.navigationcomponent.fragment.main.MainNavigationFragment">
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Logout"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        app:icon="@android:drawable/ic_menu_set_as"
+        app:iconGravity="textStart">
+    </com.google.android.material.button.MaterialButton>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/see_fav_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
