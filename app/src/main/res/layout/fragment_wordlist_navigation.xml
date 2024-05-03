@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="12dp"
-    tools:context=".navigationcomponent.fragment.wordlist.WordlistNavigationFragment">
+    tools:context=".presentation.navigationcomponent.fragment.wordlist.WordlistNavigationFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"

@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="160dp"
     android:layout_height="wrap_content"
     app:cardCornerRadius="10dp"
@@ -23,6 +24,20 @@
             app:layout_constraintBottom_toTopOf="@id/word_text"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
+
+        <ImageButton
+            android:id="@+id/add_to_fav_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="#00ffffff"
+            android:contentDescription="@string/add_to_favorite"
+            android:minWidth="48dp"
+            android:padding="6dp"
+            android:src="@android:drawable/btn_star_big_off"
+            android:tooltipText="@string/add_to_favorite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/word_image"
+            tools:targetApi="o" />
 
         <TextView
             android:id="@+id/word_text"

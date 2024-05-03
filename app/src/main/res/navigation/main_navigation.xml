@@ -6,8 +6,8 @@
     app:startDestination="@id/mainNavigationFragment">
     <fragment
         android:id="@+id/mainNavigationFragment"
-        android:name="com.example.yourwordcollection.navigationcomponent.fragment.main.MainNavigationFragment"
-        android:label="fragment_main_navigation"
+        android:name="com.example.yourwordcollection.presentation.navigationcomponent.fragment.main.MainNavigationFragment"
+        android:label="List Alphabet"
         tools:layout="@layout/fragment_main_navigation" >
         <action
             android:id="@+id/action_mainNavigationFragment_to_wordlistNavigationFragment"
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/wordlistNavigationFragment"
-        android:name="com.example.yourwordcollection.navigationcomponent.fragment.wordlist.WordlistNavigationFragment"
-        android:label="fragment_wordlist_navigation"
+        android:name="com.example.yourwordcollection.presentation.navigationcomponent.fragment.wordlist.WordlistNavigationFragment"
+        android:label="List Kata"
         tools:layout="@layout/fragment_wordlist_navigation" />
 </navigation>

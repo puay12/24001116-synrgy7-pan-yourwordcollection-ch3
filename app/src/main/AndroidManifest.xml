@@ -14,9 +14,9 @@
         android:theme="@style/Theme.YourWordCollection"
         tools:targetApi="31">
         <activity
-            android:name=".navigationcomponent.NavigationComponentActivity" />
+            android:name=".presentation.navigationcomponent.NavigationComponentActivity" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".presentation.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
