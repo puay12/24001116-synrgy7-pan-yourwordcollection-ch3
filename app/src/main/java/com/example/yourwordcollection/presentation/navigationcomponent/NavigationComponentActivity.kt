@@ -34,15 +34,6 @@ class NavigationComponentActivity : AppCompatActivity() {
         return host.navController.navigateUp() || super.onSupportNavigateUp()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-//    private fun onFavoriteAction(item: MenuItem) {
-//
-//    }
-
     private fun setupNavigationComponentWithAppbar() {
         val host:NavHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container)
                 as NavHostFragment? ?: return

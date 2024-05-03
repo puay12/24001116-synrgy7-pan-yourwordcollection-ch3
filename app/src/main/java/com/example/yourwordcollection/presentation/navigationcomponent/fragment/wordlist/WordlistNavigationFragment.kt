@@ -19,8 +19,6 @@ import com.example.yourwordcollection.databinding.FragmentWordlistNavigationBind
 import com.example.yourwordcollection.extension.SpacesItemDecoration
 import com.example.yourwordcollection.presentation.navigationcomponent.fragment.wordlist.adapter.WordlistAdapter
 import com.example.yourwordcollection.presentation.navigationcomponent.fragment.wordlist.adapter.WordlistAdapterListener
-import com.example.yourwordcollection.presentation.navigationcomponent.fragment.wordlist.logic.WordlistNavigationLogic
-import com.example.yourwordcollection.presentation.viewmodel.main.MainNavigationViewModel
 import com.example.yourwordcollection.presentation.viewmodel.wordlist.WordlistNavigationViewModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -29,7 +27,6 @@ class WordlistNavigationFragment : Fragment(), WordlistAdapterListener {
         WordlistNavigationViewModel.provideFactory(this, requireActivity().applicationContext)
     }
     private val wordlistAdapter = WordlistAdapter(this)
-    private val wordlistLogic = WordlistNavigationLogic()
     private lateinit var binding: FragmentWordlistNavigationBinding
 
     override fun onCreateView(
@@ -56,23 +53,25 @@ class WordlistNavigationFragment : Fragment(), WordlistAdapterListener {
     }
 
     override fun onClickFavorite(data: Word) {
-        viewModel.checkWordAdded(data.name).observe(viewLifecycleOwner) { result ->
-            if (result) {
-                viewModel.deleteFromFavorite(data)
+        viewModel.getFavoriteWord().observe(viewLifecycleOwner) {favoriteWord ->
+            if (favoriteWord != null) {
+                viewModel.deleteFromFavorite(favoriteWord)
                 Snackbar.make(
                     binding.root,
-                    "Kata berhasil dihapus dari daftar favorite",
+                    "Berhasil menghapus kata dari daftar favorite",
                     Snackbar.LENGTH_SHORT
                 ).show()
             } else {
-                viewModel.saveToFavorite(data.id, data.name, data.imgUrl)
+                viewModel.saveToFavorite(name = data.name, imgUrl = data.imgUrl)
                 Snackbar.make(
                     binding.root,
-                    "Kata berhasil ditambahkan ke daftar favorite",
+                    "Berhasil menambahkan kata ke daftar favorite",
                     Snackbar.LENGTH_SHORT
                 ).show()
             }
         }
+
+        viewModel.loadWordByName(data.name)
     }
 
     private fun setData(context: Context) {
@@ -82,7 +81,7 @@ class WordlistNavigationFragment : Fragment(), WordlistAdapterListener {
         )
         binding.wordList.adapter = wordlistAdapter
         binding.wordList.itemAnimator = DefaultItemAnimator()
-        binding.wordList.addItemDecoration(SpacesItemDecoration(2,20,false))
+        binding.wordList.addItemDecoration(SpacesItemDecoration(2,15,false))
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -95,7 +94,7 @@ class WordlistNavigationFragment : Fragment(), WordlistAdapterListener {
 
     private fun navigateToGoogle(keyword: String) {
         val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(wordlistLogic.getGoogleUrl(keyword))
+        intent.data = Uri.parse("https://www.google.com/search?q=${keyword} adalah")
         startActivity(intent)
     }
 }

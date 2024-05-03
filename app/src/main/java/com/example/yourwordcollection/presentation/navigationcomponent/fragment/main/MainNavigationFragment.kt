@@ -39,6 +39,7 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
         setData(view.context)
         refresh()
         binding.swipeRefresh.setOnRefreshListener { refresh() }
+        binding.seeFavBtn.setOnClickListener { navigateToFavorites() }
     }
 
     override fun onClickAlphabet(data: Array<Word>) {
@@ -70,6 +71,12 @@ class MainNavigationFragment : Fragment(), AlphabetAdapterListener {
         findNavController().navigate(
             R.id.action_mainNavigationFragment_to_wordlistNavigationFragment,
             bundle
+        )
+    }
+
+    private fun navigateToFavorites() {
+        findNavController().navigate(
+            R.id.action_mainNavigationFragment_to_favoritesNavigationFragment
         )
     }
 }

@@ -8,14 +8,27 @@
         android:id="@+id/mainNavigationFragment"
         android:name="com.example.yourwordcollection.presentation.navigationcomponent.fragment.main.MainNavigationFragment"
         android:label="List Alphabet"
-        tools:layout="@layout/fragment_main_navigation" >
+        tools:layout="@layout/fragment_main_navigation">
         <action
             android:id="@+id/action_mainNavigationFragment_to_wordlistNavigationFragment"
             app:destination="@id/wordlistNavigationFragment" />
+        <action
+            android:id="@+id/action_mainNavigationFragment_to_favoritesNavigationFragment"
+            app:destination="@id/favoritesNavigationFragment" />
     </fragment>
     <fragment
         android:id="@+id/wordlistNavigationFragment"
         android:name="com.example.yourwordcollection.presentation.navigationcomponent.fragment.wordlist.WordlistNavigationFragment"
         android:label="List Kata"
         tools:layout="@layout/fragment_wordlist_navigation" />
+    <fragment
+        android:id="@+id/favoritesNavigationFragment"
+        android:name="com.example.yourwordcollection.presentation.navigationcomponent.fragment.favorites.FavoritesNavigationFragment"
+        android:label="Daftar Kata Favorit"
+        tools:layout="@layout/fragment_favorites_navigation" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.yourwordcollection.presentation.navigationcomponent.fragment.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login"/>
 </navigation>

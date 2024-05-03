@@ -5,10 +5,10 @@ import com.example.yourwordcollection.domain.entities.WordEntity
 
 @Dao
 interface WordlistDao {
-    @Query("SELECT * FROM favorite_word_list")
+    @Query("SELECT DISTINCT * FROM favorite_word_list")
     suspend fun getAllWords(): List<WordEntity>
 
-    @Query("SELECT * FROM favorite_word_list WHERE name = :name")
+    @Query("SELECT DISTINCT * FROM favorite_word_list WHERE name = :name")
     suspend fun getWordByName(name: String) : WordEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

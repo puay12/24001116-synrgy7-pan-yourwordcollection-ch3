@@ -9,7 +9,7 @@ import com.example.yourwordcollection.presentation.navigationcomponent.fragment.
 import com.example.yourwordcollection.presentation.viewmodel.wordlist.WordlistNavigationViewModel
 
 class WordlistAdapter(
-    private val wordlistAdapterListener: WordlistAdapterListener
+    private val wordlistAdapterListener: WordlistAdapterListener,
 ) : ListAdapter<Word, WordlistViewHolder>(WordlistDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordlistViewHolder {
         return WordlistViewHolder(
