@@ -26,9 +26,4 @@
         android:name="com.example.yourwordcollection.presentation.navigationcomponent.fragment.favorites.FavoritesNavigationFragment"
         android:label="Daftar Kata Favorit"
         tools:layout="@layout/fragment_favorites_navigation" />
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.yourwordcollection.presentation.navigationcomponent.fragment.login.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login"/>
 </navigation>
